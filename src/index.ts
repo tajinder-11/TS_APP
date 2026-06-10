@@ -22,14 +22,14 @@ app.get("/health", (_req, res) => {
 
 async function init() {
   console.log("connecting redis ....");
-  const redis = new Redis("redis://localhost:6379", { lazyConnect: true });
+  const redis = new Redis("redis://redis:6379", { lazyConnect: true });
   await redis.connect();
   console.log("redis connected");
 
   console.log("Connection postgres ....");
   const {Client} = pg;
   const client = new Client({
-    host: "localhost",
+    host: "db",
     port: 5432,
     user: "postgres",
     password: "postgres",
